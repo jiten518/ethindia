@@ -379,7 +379,7 @@
                           </th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="tableData">
                       </tbody>
                     </table>
                   </div>
@@ -412,13 +412,17 @@
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
   <script src="./js/fedres-abi.js"></script>
+  <script src="./js/erc721-abi.js"></script>
   <script src="./js/web3.setup.js"></script>
   <script src="./js/fed-res-bank.js"></script>
+  <script src="./js/erc721.js"></script>
   <script>
     function actionPerform(){
       hideLoader();
       getDenomination({
         onSuccess: function(d){
+          initERC721(d[1][0])
+          displayNoteInfo("0x0", d[0][0]);
           debugger;
         },
         onError: function(e){
@@ -426,6 +430,22 @@
         }
       })
     }    
+    function displayNoteInfo(d, _de){
+      debugger;
+      getNotes(d, {
+        onSuccess: function(notes){
+          var tableData="";
+          for(var index=0; index<notes[0].length; index++){
+            tableData+=`<tr class='${index%2!=0?"table-primary":"table-even"}'><td>${(index+1)}</td><td>${_de}</td><td>${notes[0][index]}</td><td>${new Date((notes[1][index]*1000)+(index*1000)).toLocaleString()}</td></tr>`;
+          }
+          $("#tableData").append(tableData);
+            debugger;
+        },
+        onError: function(e){
+
+        }
+      })
+    }
   </script>
   <!-- endinject -->
   <!-- Custom js for this page-->

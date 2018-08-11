@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.18;
 interface  IERC721 {
    function name()external view returns (string);
    function symbol()external view returns (string);

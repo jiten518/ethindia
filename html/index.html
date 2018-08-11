@@ -22,8 +22,9 @@
     <link rel="shortcut icon" href="./images/favicon.png" />
 </head>
 
-<body>
-  <div class="container-scroller">
+<body onload="myFunction()" style="margin:0;>
+<div id="loader"></div>
+  <div id="mainDiv" class="container-scroller">
     <!-- partial:./partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -224,7 +225,7 @@
             </div>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="./home.html">
+            <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Home</span>
             </a>
@@ -586,6 +587,22 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <script src="./js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+     <script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("mainDiv").style.display = "block";
+}
+</script>
 </body>
 
 </html>

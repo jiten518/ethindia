@@ -9,6 +9,9 @@ contract FederalReserve {//is  IGovernance{
     mapping (uint256=>uint256) private cryptoERC20;
     uint[] private denominations;
     address[] private erc20Contracts;
+
+    event onTransactionCompleted();
+
     function FederalReserve() public{
         _owner = msg.sender;
     }
@@ -22,6 +25,7 @@ contract FederalReserve {//is  IGovernance{
         }
         ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);
         _moneyContract.printMoney(quantity);
+        onTransactionCompleted();
     }
 
     function createMoneyContract(uint256 denomination) internal{
@@ -37,6 +41,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.approve(to, notes[index]);
         }
+        onTransactionCompleted();
     }
 
     function tranfer(uint256 denomination, uint256[] notes, address to) external onlyMe{
@@ -45,6 +50,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.transfer(to, notes[index]);
         }
+        onTransactionCompleted();
     }
 
     function approveAndTransfer(uint256 denomination, uint256[] notes, address to) external{
@@ -54,6 +60,7 @@ contract FederalReserve {//is  IGovernance{
             _moneyContract.approve(to, notes[index]);
             _moneyContract.transfer(to, notes[index]);
         }
+        onTransactionCompleted();
     }
 
     function burnMoney(uint256 denomination, uint256[] notes) external onlyMeAndUser{
@@ -61,6 +68,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.burnMoney(notes[index]);
         }
+        onTransactionCompleted();
     }
 
     function getDenominations()external view returns(uint256[], address[]){

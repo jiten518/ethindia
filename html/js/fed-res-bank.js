@@ -4,6 +4,7 @@ function onWeb3Create() {
 function initFedResBank() {
     var fedResBankABI = web3.eth.contract(fedResSys.abi);
     frsContract = fedResBankABI.at(FRS_CONTRACT_ADDRESS);
+    actionPerform();
 }
 
 function hideLoader(){

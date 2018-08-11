@@ -10,10 +10,11 @@ interface  IERC721 {
    function approve(address _to, uint256 _tokenId)external;
    function takeOwnership(uint256 _tokenId)external;
    function transfer(address _to, uint256 _tokenId)external;
-   function tokenOfOwnerByIndex(address _owner, uint256 _index)external view returns (uint tokenId);
+   function transferFrom(address _from, address _to, uint _tokenId)public;
+//    function tokenOfOwnerByIndex(address _owner, uint256 _index)external view returns (uint tokenId);
 
    // Token metadata
-   function tokenMetadata(uint256 _tokenId) external view  returns (string infoUrl);
+//    function tokenMetadata(uint256 _tokenId) external view  returns (string infoUrl);
 
    // Events
    event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);

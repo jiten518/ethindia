@@ -1,14 +1,17 @@
 pragma solidity ^0.4.18;
-import "./IGovernance.sol";
+// import "./IGovernance.sol";
 import "./ERC721.sol";
 
-contract FederalReserve is  IGovernance{
+contract FederalReserve {//is  IGovernance{
     address private _owner;
 
     mapping (address=>bool) private federalReserve;
     mapping (uint256=>uint256) private cryptoERC20;
     uint[] private denominations;
     address[] private erc20Contracts;
+    function FederalReserve() public{
+
+    }
     function getName() external returns(string){
         return "Federal Reserve";
     }
@@ -17,7 +20,7 @@ contract FederalReserve is  IGovernance{
         for(uint index = 0; index<quantity; index++){
             ERC721 _moneyContract;
             if(cryptoERC20[denomination] != 0x0){
-                _moneyContract = new ERC721();
+                _moneyContract = new ERC721(denomination);
                 cryptoERC20[denomination] = erc20Contracts.length;
                 erc20Contracts.push(_moneyContract);
                 denominations.push(denomination);
@@ -64,21 +67,21 @@ contract FederalReserve is  IGovernance{
         return (denominations, erc20Contracts);
     }
 
-    function getNotes(uint256 denomination, address _user)external view returns(uint256[],uint256[], address[]){
-        ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);
-        return _moneyContract.getNotes(_user);
-    }
+    // function getNotes(uint256 denomination, address _user)external view returns(uint256[],uint256[], address[]){
+    //     ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);
+    //     return _moneyContract.getNotes(_user);
+    // }
 
-    function getBurnNotes(uint256 denomination, address _user)external view returns(uint256[],uint256[], address[]){
-        ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);
-        return _moneyContract.getBurntNotes(_user);        
-    }
+    // function getBurnNotes(uint256 denomination, address _user)external view returns(uint256[],uint256[], address[]){
+    //     ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);
+    //     return _moneyContract.getBurntNotes(_user);        
+    // }
 
     function addUser(address userAddess) external onlyMe{
         federalReserve[userAddess] = true;
     }
 
-    function isUserExists(address userAddess) external returns(bool){
+    function isUserExists(address userAddess) external view returns(bool){
         return federalReserve[userAddess];
     }
 

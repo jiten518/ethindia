@@ -261,17 +261,17 @@
           <div class="row">
 <div class="col-md-12 d-flex align-items-stretch grid-margin">
 
-                      <form class="forms-sample">
+                      <div class="forms-sample">
                         <div class="form-group row">
                           <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Dinominations</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Dinominations">
+                            <input type="text" class="form-control" id="denomination" placeholder="Enter denomination">
                           </div>
                         </div>
                         <div class="form-group row">
                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Quantity</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter quantity">
+                            <input type="text" class="form-control" id="quantity" placeholder="Enter quantity">
                           </div>
                         </div>
 
@@ -285,9 +285,9 @@
                     </div> -->
 
                     
-                        <button type="submit" class="btn btn-success mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
-                      </form>
+                    <button  class="btn btn-success mr-2" onclick="printMoney()">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </div>
           </div>
           </div>
         </div>
@@ -318,6 +318,9 @@
   <!-- inject:js -->
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
+  <script src="./js/fedres-abi.js"></script>
+  <script src="./js/web3.setup.js"></script>
+  <script src="./js/fed-res-bank.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

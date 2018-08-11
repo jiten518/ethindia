@@ -14,6 +14,7 @@ contract FederalReserve {//is  IGovernance{
 
     function FederalReserve() public{
         _owner = msg.sender;
+        createMoneyContract(0);
     }
     function getName() external returns(string){
         return "Federal Reserve";

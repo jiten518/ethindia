@@ -3,7 +3,7 @@ var url = "http://172.16.23.189:8548";
 var FRS_CONTRACT_ADDRESS = "0x97918a8e7ed503b01d5f226b6461f668a83aed86"
 
 if (window.Web3 !== 'undefined') {
-    web3 = new Web3(Web3.currentProvider);
+    web3 = new Web3(web3.currentProvider);
 }else{
     web3 = new Web3(new Web3.providers.HttpProvider(url));
 }

@@ -421,9 +421,9 @@
       hideLoader();
       getDenomination({
         onSuccess: function(d){
+          
           initERC721(d[1][0])
-          displayNoteInfo("0x0", d[0][0]);
-          debugger;
+          displayNoteInfo(getLoginUser(), d[0][0]);
         },
         onError: function(e){
           debugger;

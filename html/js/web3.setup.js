@@ -17,3 +17,7 @@ web3.version.getNetwork(function(err, networkId){
             alert("Unable to connect to network, please check your node.");
     }
 });
+
+function getLoginUser(){
+    return "0x0";
+}

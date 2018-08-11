@@ -76,21 +76,13 @@ function transferMoney() {
     });
 }
 
-function getDenomination() {
-    var _from = web3.eth.accounts[0];
-    frsContract.printMoney.estimateGas({ from: _from }, function (error, _gas) {
-        if (error) {
-            hideLoader();
-            
+function getDenomination(callback) {
+    frsContract.getDenominations.call(function (error, data) {
+        if(error){
+            callback.onError(error);
             return;
-            //Show sweet alert();
         }
-        debugger;
-        frsContract.getDenominations.sendTransaction({ from: _from, gas: parseInt(_gas * 1.3) }, function (error, _gas) {
-            debugger;
-            hideLoader();
-            
-        });
+        callback.onSuccess(data);
     });
 }
 

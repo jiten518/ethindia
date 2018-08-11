@@ -16572,4 +16572,12 @@ ul {
   100% { transform: rotate(360deg); }
 }
 
+select-drop-down {
+    -webkit-appearance: none;
+    -moz-appearance : none;
+    border:1px solid #ccc;
+    border-radius:3px;
+    padding:5px 3px;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

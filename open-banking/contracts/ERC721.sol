@@ -31,7 +31,7 @@ contract ERC721{ //is IERC721{
     // Events
     event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
     event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
-    event Mint(uint256 quantity);
+    event Mint(address _contractAddr, uint256 quantity);
 
 
     function ERC721(uint256 _d) public{
@@ -68,7 +68,7 @@ contract ERC721{ //is IERC721{
             liveNotes.push(tokenIndex);
             allTokensIndex[tokenIndex] = allTokens.length;
         }
-        Mint(quantity);
+        Mint(this, quantity);
     }
     // Functions that define ownership
     function ownerOf(uint256 _tokenId)external view returns (address){

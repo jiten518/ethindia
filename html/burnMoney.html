@@ -23,8 +23,8 @@
     <link rel="shortcut icon" href="./images/favicon.png" />
 </head>
 
-<body>
-  <div class="container-scroller">
+<body> <div id="loader"></div>
+  <div id="mainDiv" class="container-scroller">
     <!-- partial:./partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
          <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -263,6 +263,19 @@
                         <div class="col-md-6 d-flex align-items-stretch grid-margin">
 
                       <div class="forms-sample">
+                      <div style="margin-bottom: 10px">
+                      <select class="select-drop-down" style="margin: 20" id="denominationForAddMoney">
+                            <option value="" disabled selected>Select Dinominations 
+                            </option>
+                            <option value="2000">2000</option>
+                            <option value="500">500</option>
+                            <option value="100">100</option>
+                            <option value="50">50</option>  
+                            <option value="20">20</option>
+                            <option value="10">10</option>
+                             <option value="5">5</option>
+                      </select>
+                      </div>
                         <div class="form-group row">
                           <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                           <div class="col-sm-8">
@@ -309,6 +322,14 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+   <script>
+         
+
+    function actionPerform(){
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("mainDiv").style.display = "block";
+    }
+  </script>
 </body>
 
 </html>

@@ -23,7 +23,9 @@
 </head>
 
 <body>
+    <div id="loader"></div>
   <div class="container-scroller">
+      
     <!-- partial:./partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -322,6 +324,14 @@
   <script src="./js/fedres-abi.js"></script>
   <script src="./js/web3.setup.js"></script>
   <script src="./js/fed-res-bank.js"></script>
+  <script>
+         
+
+    function actionPerform(){
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("mainDiv").style.display = "block";
+    }
+  </script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

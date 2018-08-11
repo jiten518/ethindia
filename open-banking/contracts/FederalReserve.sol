@@ -18,10 +18,9 @@ contract FederalReserve {//is  IGovernance{
 
     function printMoney(uint256 denomination, uint256 quantity) external onlyMe{
         for(uint index = 0; index<quantity; index++){
-            // if(erc20Contracts.length == 0 || erc20Contracts[cryptoERC20[denomination]] == address(0)){
-            //     createMoneyContract(denomination);
-            //     // continue;
-            // }
+            if(erc20Contracts.length == 0 || erc20Contracts[cryptoERC20[denomination]] == address(0)){
+                createMoneyContract(denomination);
+            }
             // ERC721 _moneyContract = ERC721(cryptoERC20[denomination]);
             // _moneyContract.printMoney(quantity);
         }

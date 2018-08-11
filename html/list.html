@@ -298,61 +298,7 @@
                           </th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr class="table-primary">
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            500
-                          </td>
-                          <td>
-                            QGUDAS.......XVMX
-                          </td>
-                          <td>
-                            07-08-18
-                          </td>
-                        </tr>
-                        <tr class="table-even">
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            500
-                          </td>
-                          <td>
-                            QGUDAS.......XVMX
-                          </td>
-                          <td>
-                            07-08-18
-                          </td>
-                        </tr> <tr class="table-primary">
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            500
-                          </td>
-                          <td>
-                            QGUDAS.......XVMX
-                          </td>
-                          <td>
-                            07-08-18
-                          </td>
-                        </tr> <tr class="table-even">
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            500
-                          </td>
-                          <td>
-                            QGUDAS.......XVMX
-                          </td>
-                          <td>
-                            07-08-18
-                          </td>
-                        </tr>
+                      <tbody id="tableData">
                       </tbody>
                     </table>
                   </div>
@@ -393,7 +339,21 @@
   <!-- End custom js for this page-->
    <script>
          
+      function displayNoteInfo(d, _de){
+        getNotes(d, {
+          onSuccess: function(notes){
+            var tableData="";
+            for(var index=0; index<notes[0].length; index++){
+              tableData+=`<tr class='${index%2!=0?"table-primary":"table-even"}'><td>${(index+1)}</td><td>${_de}</td><td>${notes[0][index]}</td><td>${new Date((notes[1][index]*1000)+(index*1000)).toLocaleString()}</td></tr>`;
+            }
+            $("#tableData").append(tableData);
+              debugger;
+          },
+          onError: function(e){
 
+          }
+        })
+      }
     function actionPerform(){
       document.getElementById("loader").style.display = "none";
       document.getElementById("mainDiv").style.display = "block";

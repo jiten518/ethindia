@@ -7,6 +7,7 @@ if (window.web3 !== 'undefined') {
     web3 = new Web3(new Web3.providers.HttpProvider(url));
 }
 web3.version.getNetwork(function(err, networkId){
+    networkId = parseInt(networkId);
     switch(networkId){
         case NETWORK_ID:
             onWeb3Create();

@@ -8,9 +8,9 @@ contract FederalReserve {//is  IGovernance{
     mapping (address=>bool) private federalReserve;
     mapping (uint256=>uint256) private cryptoERC20;
     uint[] private denominations;
-    address[] private erc20Contracts;
+    address[] public erc20Contracts;
     function FederalReserve() public{
-
+        _owner = msg.sender;
     }
     function getName() external returns(string){
         return "Federal Reserve";
@@ -18,17 +18,20 @@ contract FederalReserve {//is  IGovernance{
 
     function printMoney(uint256 denomination, uint256 quantity) external onlyMe{
         for(uint index = 0; index<quantity; index++){
-            ERC721 _moneyContract;
-            if(cryptoERC20[denomination] != 0x0){
-                _moneyContract = new ERC721(denomination);
-                cryptoERC20[denomination] = erc20Contracts.length;
-                erc20Contracts.push(_moneyContract);
-                denominations.push(denomination);
-                // continue;
-            }
-            _moneyContract = ERC721(cryptoERC20[denomination]);
-            _moneyContract.printMoney(quantity);
+            // if(erc20Contracts.length == 0 || erc20Contracts[cryptoERC20[denomination]] == address(0)){
+            //     createMoneyContract(denomination);
+            //     // continue;
+            // }
+            // ERC721 _moneyContract = ERC721(cryptoERC20[denomination]);
+            // _moneyContract.printMoney(quantity);
         }
+    }
+
+    function createMoneyContract(uint256 denomination) internal{
+        ERC721 _moneyContract = new ERC721(denomination);
+        cryptoERC20[denomination] = erc20Contracts.length;
+        erc20Contracts.push(_moneyContract);
+        denominations.push(denomination);
     }
 
     function approve(uint256 denomination, uint256[] notes, address to) external onlyMe{

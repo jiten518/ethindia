@@ -127,3 +127,26 @@ function getDenomination(callback) {
     });
 }
 
+
+function addUser(){
+    showLoader();
+    var userAddress =$("#addUserId").val();
+    var _from = web3.eth.accounts[0];
+    frsContract.addUser.estimateGas(userAddress, { from: _from }, function (error, _gas) {
+        if (error) {
+            showError("addUser");            
+            return;
+            //Show sweet alert();
+        }
+        debugger;
+        frsContract.addUser.sendTransaction(userAddress, { from: _from, gas: parseInt(_gas * 1.3) }, function (error, _gas) {
+            if (error) {
+                showError("addUser");            
+                return;
+                //Show sweet alert();
+            }
+            txId = _gas;
+        });
+    });
+}
+

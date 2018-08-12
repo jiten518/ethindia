@@ -11,7 +11,7 @@ contract FederalReserve {//is  IGovernance{
     address[] private erc20Contracts;
 
     event onTransactionCompleted(string msgr);
-    event requestNote(address indexed _from, address indexed _to, address contractAddr);
+    event requestNote(address indexed _from, address indexed _to, address contractAddr, uint256 noteId);
 
     function FederalReserve() public{
         _owner = msg.sender;
@@ -116,7 +116,7 @@ contract FederalReserve {//is  IGovernance{
 
     function requestMoney(uint256 denomination, uint256 noteId, address ownerOf)public{
         require(validateNote(denomination,noteId, ownerOf));
-        requestNote(msg.sender,ownerOf, cryptoERC20[denomination]);
+        requestNote(msg.sender,ownerOf, cryptoERC20[denomination], noteId);
     }
     // function getNotes(uint256 denomination, address _user)external view returns(uint256[],uint256[], address[]){
     //     ERC721 _moneyContract = ERC721(erc20Contracts[cryptoERC20[denomination]]);

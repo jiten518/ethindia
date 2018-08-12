@@ -457,6 +457,14 @@
             debugger;
           }
         })
+        frsContract.requestNote(function(err, data){
+          debugger;
+          if(err){
+              return;
+          }
+          hideLoader();
+          swal("Sent request to owner.");
+      })
     }
     function onCheckClicked(){
         // contractAddress = $("#denominationForFakeCurrency").val()

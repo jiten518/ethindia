@@ -18,14 +18,6 @@ function initEvents(){
         }
         // if(txId == data)
     })
-    frsContract.requestNote(function(err, data){
-        debugger;
-        if(err){
-            return;
-        }
-        hideLoader();
-        swal("Sent request to owner.");
-    })
 }
 function hideLoader(){
     document.getElementById("loader").style.display = "none";

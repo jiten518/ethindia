@@ -1,6 +1,6 @@
 var NETWORK_ID = 72618;
 var url = "http://172.16.23.189:8548";
-var FRS_CONTRACT_ADDRESS = "0x93c71896a417a29093b8f2afc5d37defeb23e340"
+var FRS_CONTRACT_ADDRESS = "0xf7a871d3a0d777c6b0353702fc5d73e497a81e76"
 
 if (window.Web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
@@ -17,7 +17,12 @@ web3.version.getNetwork(function(err, networkId){
             alert("Unable to connect to network, please check your node.");
     }
 });
-
+function setUserInfo(userId){
+    localStorage.userId = userId;
+}
 function getLoginUser(){
-    return "0xba124aadc58ee6b08b548c1c479ee8e588479e00";
+    if(!localStorage.userId){
+        setUserInfo('0xba124aadc58ee6b08b548c1c479ee8e588479e00');
+    }
+    return localStorage.userId;
 }

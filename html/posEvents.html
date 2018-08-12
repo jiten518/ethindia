@@ -284,6 +284,31 @@
   <script>
     function actionPerform(){
       hideLoader();
+      frsContract.requestNote({from: getLoginUser()}, function(err, data){
+          debugger;
+          if(err){
+              return;
+          }
+          parseEvent(data);          
+      })
+    }
+    function parseEvent(data){
+      debugger;
+      swal({
+          title: `Withdraw!`,
+          text: `${data.args._from} is requesting to withdraw ${data.data.noteId}`,
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "btn-danger",
+          confirmButtonText: "Yes, Accept!",
+          closeOnConfirm: false
+        },
+      function(){
+        acceptEvent(data);
+      });
+    }
+    function acceptEvent(){
+
     }
   </script>
   <!-- endinject -->

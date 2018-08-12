@@ -1,9 +1,12 @@
+var txId = undefined;
+
 function onWeb3Create() {
     initFedResBank();
 }
 function initFedResBank() {
     var fedResBankABI = web3.eth.contract(fedResSys.abi);
     frsContract = fedResBankABI.at(FRS_CONTRACT_ADDRESS);
+    initEvents();
     actionPerform();
 }
 
@@ -18,7 +21,7 @@ function showLoader(){
 
 function printMoney() {
     showLoader();
-    var denomination = parseInt($("#denomination").val());
+    var denomination = parseInt($("#denominationForAdd").val());
     var quantity = parseInt($("#quantity").val());
     var _from = web3.eth.accounts[0];
     frsContract.printMoney.estimateGas(denomination, quantity, { from: _from }, function (error, _gas) {
@@ -29,12 +32,20 @@ function printMoney() {
         }
         debugger;
         frsContract.printMoney.sendTransaction(denomination, quantity, { from: _from, gas: parseInt(_gas * 1.3) }, function (error, _gas) {
-            debugger;
             hideLoader();
         });
     });
 }
 
+function getTotalMoney(toAddress, callback){
+    frsContract.getTotalMoney.call(toAddress, function (error, _gas) {
+        if(error){
+            callback.onError(error);
+            return;
+        }
+        callback.onSuccess(_gas);
+    });
+}
 function burnMoney() {
     var denomination = parseInt($("#denominationForBurn").val());
     var noteId = parseInt($("#nodeId").val());

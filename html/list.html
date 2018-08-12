@@ -183,7 +183,7 @@
       <!-- partial:./partials/_sidebar.html -->
          
 
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <!-- <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -248,21 +248,14 @@
                  <!--  <h4 class="card-title">Currency List</h4> -->
                   <div style="margin-bottom: 10px">
                       <select class="select-drop-down" style="margin: 20" id="denominationForTransfer">
-                            <option value="" disabled selected>Select Dinominations 
-                            </option>
-                            <option value="2000">2000</option>
-                            <option value="500">500</option>
-                            <option value="100">100</option>
-                            <option value="50">50</option>  
-                            <option value="20">20</option>
-                            <option value="10">10</option>
-                             <option value="5">5</option>
+                          <option value="" disabled selected>Dinominations Loading.. 
+                          </option>
                       </select>
 
                       </div>
 
-                       <div style="margin-top:-5px;margin-left:10px">
-                       <button type="submit" class="btn btn-success mr-2" onclick="getListfunction">GO</button>
+                        <div style="margin-top:-5px;margin-left:10px">
+                       <button class="btn btn-success mr-2" onclick="loadNotes()">GO</button>
                       </div>
                       </div>
                   <div class="table-responsive">
@@ -280,6 +273,9 @@
                           </th>
                           <th>
                             Created At
+                          </th>
+                          <th>
+                              Owner
                           </th>
                         </tr>
                       </thead>
@@ -319,30 +315,60 @@
   <!-- inject:js -->
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
+  <script src="./js/fedres-abi.js"></script>
+  <script src="./js/erc721-abi.js"></script>
+  <script src="./js/web3.setup.js"></script>
+  <script src="./js/fed-res-bank.js"></script>
+  <script src="./js/erc721.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
    <script>
-         
+      function actionPerform(){
+        getDenomination({
+          onSuccess: function(d){
+            initDropdown(d[1], d[0]);
+            initERC721(d[1][0])
+            displayNoteInfo(getLoginUser(), d[0][0]);
+            debugger;
+          },
+          onError: function(e){
+            debugger;
+          }
+        })
+        hideLoader();
+      }    
+      function loadNotes(){
+        contractAddress = $("#denominationForTransfer").val()
+        selectedDemon = $( "#denominationForTransfer option:selected" ).text();
+        initERC721(contractAddress)
+        displayNoteInfo(getLoginUser(), selectedDemon);
+      }
+      function initDropdown(address, data){
+        $("#denominationForTransfer").empty();
+        var optionTxt = ' <option value="" disabled selected>Select dinominations</option>';
+        for(var index=0;index<data.length; index++){
+          optionTxt+=`<option value="${address[index]}">${data[index]}</option>`;
+        }
+        $("#denominationForTransfer").append(optionTxt);
+      }
       function displayNoteInfo(d, _de){
+        showLoader();
+        $("#tableData").empty();
         getNotes(d, {
           onSuccess: function(notes){
             var tableData="";
             for(var index=0; index<notes[0].length; index++){
-              tableData+=`<tr class='${index%2!=0?"table-primary":"table-even"}'><td>${(index+1)}</td><td>${_de}</td><td>${notes[0][index]}</td><td>${new Date((notes[1][index]*1000)+(index*1000)).toLocaleString()}</td></tr>`;
+              tableData+=`<tr class='${index%2!=0?"table-primary":"table-even"}'><td>${(index+1)}</td><td>${_de}</td><td>${notes[0][index]}</td><td>${new Date((notes[1][index]*1000)+(index*1000)).toLocaleString()}</td><td>${notes[2][index]}</td></tr>`;
             }
             $("#tableData").append(tableData);
-              debugger;
+            hideLoader();
           },
           onError: function(e){
 
           }
         })
       }
-    function actionPerform(){
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("mainDiv").style.display = "block";
-    }
   </script>
 </body>
 

@@ -153,3 +153,23 @@ function showError(data){
     swal("Opps",`Something went wrong in ${data}!`, "error");
     hideLoader();
 }
+
+function checkIfUserExist(){
+    debugger;
+    showLoader();
+    var userAddress = $("#VerifyNewUserId").val();
+    frsContract.isUserExists.call(userAddress, function (error, _gas) {
+        if (error) {
+            showError("addUser");            
+            return;
+            //Show sweet alert();
+        }
+        hideLoader();
+        if(!_gas){
+            swal("Error","User not register with system.","error");
+        }else{
+            swal("Success","User registered with system.","success");
+        }
+    });
+}
+

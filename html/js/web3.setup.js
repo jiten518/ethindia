@@ -18,11 +18,12 @@ web3.version.getNetwork(function(err, networkId){
     }
 });
 function setUserInfo(userId){
-    localStorage.userId = userId;
+    //localStorage.userId = userId;
+    localStorage.setItem("userId", userId);    
 }
 function getLoginUser(){
     if(!localStorage.userId){
         setUserInfo('0xba124aadc58ee6b08b548c1c479ee8e588479e00');
     }
-    return localStorage.userId;
+    return localStorage.getItem("userId");
 }

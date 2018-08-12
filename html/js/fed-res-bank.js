@@ -150,3 +150,17 @@ function addUser(){
     });
 }
 
+
+function checkIfUserExist(){
+    showLoader();
+    var userAddress =$("#VerifyNewUserId").val();
+    frsContract.isUserExists.call(userAddress, function (error, _gas) {
+            if (error) {
+                showError("addUser");            
+                return;
+                //Show sweet alert();
+            }
+            txId = _gas; 
+    });
+}
+

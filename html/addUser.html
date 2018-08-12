@@ -248,11 +248,33 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-          <div class="col-md-12 d-flex align-items-stretch grid-margin">
+          <div class="col-md-6 d-flex align-items-stretch grid-margin">
                  <div class="card">
-                    <div class="card-body"> 
-                      <div class="forms-sample">
+                    <div class="card-body">
+                    <H4>Verify User</H4>
+                       <div class="forms-sample">
 
+                      <div class="form-group row">
+                           <label for="exampleInputEmail2" class="col-sm-4 col-form-label">UserId</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="VerifyNewUserId" placeholder="Enter UserId">
+
+                          </div>
+                      </div>
+                    </div>
+               
+                    <button  class="btn btn-success mr-2" onclick="checkIfUserExist()">Verify</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </div>
+
+                  </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex align-items-stretch grid-margin">
+                 <div class="card">
+                    <div class="card-body">
+                     <H4>Add User</H4>
+                      <div class="forms-sample">
                       <div class="form-group row">
                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label">UserId</label>
                           <div class="col-sm-8">
@@ -260,18 +282,7 @@
 
                           </div>
                       </div>
-                    </div>    
-
-                       <!--  <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail3">Email address</label>
-                      <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                    </div> -->
-
-                    
+                    </div>                 
                     <button  class="btn btn-success mr-2" onclick="addUser()">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </div>

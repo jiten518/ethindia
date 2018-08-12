@@ -7,7 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="./web3/web3.js"></script>
-
+    <script type="text/javascript" src="./plugins/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/sweetalert.css">
     <title>ETHIndia - JMNV</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -162,12 +163,13 @@
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Hello,!</span>
-              <img class="img-xs rounded-circle" src="./images/faces/face1.jpg" alt="Profile image">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"  href="./settings.html">
+              <span class="profile-text" >Hello, !   </span>
+              <span class="profile-text" style="margin-right: -2px">More</span>
+
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item mt-2">
+              <a class="dropdown-item mt-2" href="./settings.html">
                 Settings
               </a>
             </div>
@@ -237,9 +239,8 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-              <div class="row">
-
-
+          <H1>Point of sale</H1>
+              <div class="row">   
                   <div class="col-md-6 d-flex align-items-stretch grid-margin">
                     <div class="row flex-grow">
                       <div class="col-12">
@@ -270,7 +271,7 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="nodeIdForFakeCurrency" placeholder="Enter NoteId">
+                                    <input type="text" class="form-control" id="nodeIdForFakeCurrency" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 
@@ -288,7 +289,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputEmail3">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                  <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Email">
                                 </div> -->
 
                                 <div class="row">
@@ -335,14 +336,14 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="noteIdForVerifyUser" placeholder="Enter NoteId">
+                                    <input type="text" class="form-control" id="noteIdForVerifyUser" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Address</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="AddressForVerifyUser" placeholder="Enter Address">
+                                    <input type="text" class="form-control" id="AddressForVerifyUser" placeholder="Enter Address">
                                   </div>
                                 </div>
                                    <!--  <div class="form-group">
@@ -351,7 +352,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputEmail3">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                  <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Email">
                                 </div> -->
 
                                 <div class="row">
@@ -392,14 +393,14 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="nodeIdForTransfer" placeholder="Enter NoteId">
+                                    <input type="text" class="form-control" id="nodeIdForTransfer" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 
                                  <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Address</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="AddressForTransfer" placeholder="Enter Address">
+                                    <input type="text" class="form-control" id="AddressForTransfer" placeholder="Enter Address">
                                   </div>
                                 </div>
 
@@ -409,7 +410,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputEmail3">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                  <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Email">
                                 </div> -->
 
                           

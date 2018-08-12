@@ -473,12 +473,11 @@
         });
     }    
     function onScanClicked(){
-        var selectedDemon = parseInt($("#denominationForVerifyUser option:selected").text());
-        var noteId = $("#noteIdForVerifyUser").val()
-        var address = $("#AddressForVerifyUser").val()
-        frsContract.validateNote.call(selectedDemon, noteId,address, function (error, data) {
-
-        });
+        showLoader();
+        var selectedDemon = parseInt($("#denominationForTransfer option:selected").text());
+        var noteId = $("#nodeIdForTransfer").val()
+        var address = $("#AddressForTransfer").val()
+        onPOSScan(selectedDemon, noteId, address);
     }
     function initDropdown(address, data){
       var options = ['#denominationForFakeCurrency','#denominationForVerifyUser',"#denominationForTransfer"]

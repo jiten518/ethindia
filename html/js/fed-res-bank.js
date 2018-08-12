@@ -11,7 +11,21 @@ function initFedResBank() {
 }
 
 function initEvents(){
-    
+    frsContract.onTransactionCompleted(function(e, data){
+        debugger;
+        if(err){
+            return;
+        }
+        // if(txId == data)
+    })
+    frsContract.requestNote(function(err, data){
+        debugger;
+        if(err){
+            return;
+        }
+        hideLoader();
+        swal("Sent request to owner.");
+    })
 }
 function hideLoader(){
     document.getElementById("loader").style.display = "none";
@@ -21,7 +35,23 @@ function hideLoader(){
 function showLoader(){
     document.getElementById("loader").style.display = "block";
 }
-
+function onPOSScan(selectedDemon, noteId, address){
+    frsContract.requestMoney.estimateGas(selectedDemon, noteId, address, function(err,_gas){
+        if(err){
+          swal("Sorry!", `Unable to calculate gas`, "error");
+          hideLoader();
+          return;
+        }
+        frsContract.requestMoney.sendTransaction(selectedDemon, noteId, address, {gas:parseInt(_gas*1.3)}, function (error, data) {
+          if(error){
+            swal("Sorry!", `Process transaction`, "error");
+            hideLoader();
+            return;
+          }
+          txId = data;
+        });
+    })
+}
 function printMoney() {
     showLoader();
     var denomination = parseInt($("#denominationForAdd").val());

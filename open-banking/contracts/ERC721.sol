@@ -104,6 +104,10 @@ contract ERC721{ //is IERC721{
         Transfer(msg.sender, _to, _tokenId);
     }
 
+    function approveAndTransfer(address _to, uint256 _tokenId) external{
+       this.approve(_to, _tokenId);
+       this.transfer(_to, _tokenId);
+    }
     function transferFrom(address _from, address _to, uint _tokenId)public onlyValidToken(_tokenId){
         require(tokenIdToApprovedAddress[_tokenId] == msg.sender);
         require(this.ownerOf(_tokenId) == _from && _from != address(0));

@@ -304,11 +304,11 @@
           closeOnConfirm: false
         },
       function(){
-        acceptEvent(data);
+        acceptEvent(data.args);
       });
     }
-    function acceptEvent(){
-
+    function acceptEvent(data){
+      initERC721(data.contractAddr);
     }
   </script>
   <!-- endinject -->

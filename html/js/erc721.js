@@ -12,3 +12,17 @@ function getNotes(userId, callback){
         callback.onSuccess(data);
     })
 }
+
+function approveAndtrasfer(noteId, _to){
+    debugger;
+    erc721Contrct.approveAndTransfer.estimateGas(noteId, _to, function(e, _gas){
+        if(e){
+            swal("Error","Unable to estgas","error");
+            return;
+        }
+        erc721Contrct.approveAndTransfer(noteId, _to, function(e, data){
+            debugger;
+        });
+
+    })
+}

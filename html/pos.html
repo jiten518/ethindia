@@ -4,10 +4,11 @@
 <head>
   <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript" src="./web3/web3.min.js"></script>
 
-    <title>ETHIndia- JMMV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="./web3/web3.js"></script>
+
+    <title>ETHIndia - JMMV</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./vendors/css/vendor.bundle.base.css">
@@ -22,12 +23,11 @@
     <link rel="shortcut icon" href="./images/favicon.png" />
 </head>
 
-<body style="margin:0;">
-<div id="loader"></div>
+<body> <div id="loader"></div>
   <div id="mainDiv" class="container-scroller">
     <!-- partial:./partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
              <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi"></i>
               <span class="menu-title">ETHIndia - JMMV</span>
@@ -203,7 +203,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:./partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <!-- <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -236,7 +236,7 @@
               <span class="menu-title">Add Money</span>
             </a>
           </li>
-         <!--  <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="./burnMoney.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Burn Money</span>
@@ -259,137 +259,169 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-                       
-            <div class="col-md-3 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <!-- <h4 class="card-title">Total</h4> -->
-                     <!--  <p class="card-description">
-                        Basic form layout
-                      </p> -->
-                      <form class="forms-sample">
-                        <div class="form-group-secondary_">
-                          <label for="exampleInputEmail1">Total</label>
-                        </div>
-                        <div class="form-group-secondary">
-                          <label for="exampleInputPassword1">123...</label>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                     <!--  <h4 class="card-title">Total</h4> -->
-                     <!--  <p class="card-description">
-                        Basic form layout
-                      </p> -->
-                      <form class="form-sample">
-                        <div class="form-group-secondary_">
-                          <label for="exampleInputEmail1">Transfers</label>
-                        </div>
-                        <div class="form-group-secondary">
-                          <label for="exampleInputPassword1">
-                          12</label>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                     <!--  <h4 class="card-title">Total</h4> -->
-                     <!--  <p class="card-description">
-                        Basic form layout
-                      </p> -->
-                      <form class="forms-sample">
-                        <div class="form-group-secondary_">
-                          <label for="exampleInputEmail1">Burn Outs</label>
-                        </div>
-                        <div class="form-group-secondary">
-                          <label for="exampleInputPassword1">50</label>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                   <!--    <h4 class="card-title">Total</h4> -->
-                     <!--  <p class="card-description">
-                        Basic form layout
-                      </p> -->
-                      <form class="form-sample">
-                        <div class="form-group-secondary_">
-                          <label for="exampleInputEmail1">...</label>
-                        </div>
-                        <div class="form-group-secondary">
-                          <label for="exampleInputPassword1">...</label>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-                      
-          </div>
-
-          <div class="col-lg-12 ">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Currency List</h4>
-                  <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            #
-                          </th>
-                          <th>
-                            Denominations
-                          </th>
-                          <th>
-                            Note Id
-                          </th>
-                          <th>
-                            Created At
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody id="tableData">
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <div class="row">
 
 
-          </div>
+                  <div class="col-md-3 d-flex align-items-stretch grid-margin">
+                    <div class="row flex-grow">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-body">
+                           <!--  <h4 class="card-title">Total</h4> -->
+                           <!--  <p class="card-description">
+                              Basic form layout
+                            </p> -->
+                            <form class="forms-sample">
+                              <div class="form-group-secondary_">
+                                <label for="exampleInputEmail1">Fake Currency Detector</label>
+
+                                <div class="forms-sample">
+                                <div style="margin-bottom: 10px">
+                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                      <option value="" disabled selected>Select Dinominations 
+                                      </option>
+                                      <option value="2000">2000</option>
+                                      <option value="500">500</option>
+                                      <option value="100">100</option>
+                                      <option value="50">50</option>  
+                                      <option value="20">20</option>
+                                      <option value="10">10</option>
+                                       <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
+                                  <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
                                   </div>
+                                </div>
+
+                                   <!--  <div class="form-group">
+                                  <label for="exampleInputName1">Name</label>
+                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail3">Email address</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                </div> -->
+
+                                <div class="row">
+                                <button type="submit" class="btn btn-success mr-2">CHECK</button>
+                                <button class="btn btn-light">Cancel</button>
+                                </div>
+                            </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div  class="col-md-3 d-flex align-items-stretch grid-margin"></div>
+
+                <div class="col-md-3 d-flex align-items-stretch grid-margin">
+                    <div class="row flex-grow">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-body">
+                           <!--  <h4 class="card-title">Total</h4> -->
+                           <!--  <p class="card-description">
+                              Basic form layout
+                            </p> -->
+                            <form class="forms-sample">
+                              <div class="form-group-secondary_" >
+                                <label for="exampleInputEmail1">Verify User</label>
+                              </div>
+                              <div class="forms-sample">
+                                <div style="margin-bottom: 10px">
+                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                      <option value="" disabled selected>Select Dinominations 
+                                      </option>
+                                      <option value="2000">2000</option>
+                                      <option value="500">500</option>
+                                      <option value="100">100</option>
+                                      <option value="50">50</option>  
+                                      <option value="20">20</option>
+                                      <option value="10">10</option>
+                                       <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
+                                  <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
+                                  </div>
+                                </div>
+
+                                   <!--  <div class="form-group">
+                                  <label for="exampleInputName1">Name</label>
+                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail3">Email address</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                </div> -->
+
+                                <div class="row">
+                                <button type="submit" class="btn btn-success mr-2">VERIFY</button>
+                                <button class="btn btn-light">Cancel</button>
+                                </div>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+
+
+          <div class="row">
+                  <div class="col-md-12 card">
+                    <div class="card-body">
+                      <div class="col-md-12 d-flex align-items-stretch grid-margin">
+
+                            <div class="forms-sample">
+                                <div style="margin-bottom: 10px">
+                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                      <option value="" disabled selected>Select Dinominations 
+                                      </option>
+                                      <option value="2000">2000</option>
+                                      <option value="500">500</option>
+                                      <option value="100">100</option>
+                                      <option value="50">50</option>  
+                                      <option value="20">20</option>
+                                      <option value="10">10</option>
+                                       <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
+                                  <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
+                                  </div>
+                                </div>
+
+                                   <!--  <div class="form-group">
+                                  <label for="exampleInputName1">Name</label>
+                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail3">Email address</label>
+                                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                </div> -->
+
+                          
+                                <button type="submit" class="btn btn-success mr-2">SCAN</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </div>
+                      </div>
+                    </div>
+                  </div> 
+          </div>
+        </div>
 
         </div>
         <!-- content-wrapper ends -->
@@ -400,7 +432,6 @@
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="./vendors/js/vendor.bundle.base.js"></script>
@@ -411,49 +442,17 @@
   <!-- inject:js -->
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
-  <script src="./js/fedres-abi.js"></script>
-  <script src="./js/erc721-abi.js"></script>
-  <script src="./js/web3.setup.js"></script>
-  <script src="./js/fed-res-bank.js"></script>
-  <script src="./js/erc721.js"></script>
-  <script>
-    function actionPerform(){
-      hideLoader();
-      getDenomination({
-        onSuccess: function(d){
-          initERC721(d[1][0])
-          displayNoteInfo("0x0", d[0][0]);
-          debugger;
-        },
-        onError: function(e){
-          debugger;
-        }
-      })
-    }    
-    function displayNoteInfo(d, _de){
-      debugger;
-      getNotes(d, {
-        onSuccess: function(notes){
-          var tableData="";
-          for(var index=0; index<notes[0].length; index++){
-            tableData+=`<tr class='${index%2!=0?"table-primary":"table-even"}'><td>${(index+1)}</td><td>${_de}</td><td>${notes[0][index]}</td><td>${new Date((notes[1][index]*1000)+(index*1000)).toLocaleString()}</td></tr>`;
-          }
-          $("#tableData").append(tableData);
-            debugger;
-        },
-        onError: function(e){
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+   <script>
+         
 
-        }
-      })
+    function actionPerform(){
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("mainDiv").style.display = "block";
     }
   </script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <!-- End custom js for this page-->
-  <script src="./js/misc.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <!-- End custom js for this page-->
 </body>
 
 </html>

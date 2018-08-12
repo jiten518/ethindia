@@ -87,16 +87,15 @@ contract ERC721{ //is IERC721{
         require(msg.sender == tokenIdToOwner[_tokenId]);
         require(msg.sender != _to);
 
-        if (tokenIdToOwner[_tokenId] == msg.sender && allTokens[_tokenId].isBurnt == false) {
-            tokenIdToApprovedAddress[_tokenId] = _to;
-            Approval(msg.sender, _to, _tokenId);
-        }
+        // if (tokenIdToOwner[_tokenId] == msg.sender && allTokens[_tokenId].isBurnt == false) {
+        tokenIdToApprovedAddress[_tokenId] = _to;
+        Approval(msg.sender, _to, _tokenId);
+        // }
     }
 
-    function transfer(address _to, uint _tokenId) external onlyValidToken(_tokenId){
-        require(this.ownerOf(_tokenId) == msg.sender);
-
-        require(_to != address(0));
+    function transfer(address _to, uint _tokenId) external{
+        require(msg.sender == tokenIdToOwner[_tokenId]);
+        require(msg.sender != _to);
 
         _clearApprovalAndTransfer(msg.sender, _to, _tokenId);
 
@@ -105,15 +104,15 @@ contract ERC721{ //is IERC721{
     }
 
     function approveAndTransfer(address _to, uint256 _tokenId) external{
-       this.approve(_to, _tokenId);
-       this.transfer(_to, _tokenId);
+        this.approve(_to, _tokenId);
+        this.transfer(_to, _tokenId);
     }
     function transferFrom(address _from, address _to, uint _tokenId)public onlyValidToken(_tokenId){
         require(tokenIdToApprovedAddress[_tokenId] == msg.sender);
         require(this.ownerOf(_tokenId) == _from && _from != address(0));
         require(_to != address(0));
 
-        _clearApprovalAndTransfer(_from, _to, _tokenId);
+        // _clearApprovalAndTransfer(_from, _to, _tokenId);
 
         Approval(_from, 0, _tokenId);
         Transfer(_from, _to, _tokenId);
@@ -140,7 +139,6 @@ contract ERC721{ //is IERC721{
     function _addTokenToOwnersList(address _to, uint _tokenId) internal{
         ownedTokens[_to].push(_tokenId);
         uint256 ownedTokenIndex = ownedTokens[msg.sender].length;
-        ownedTokens[_to].push(_tokenId);
         ownedTokensIndex[_tokenId] = ownedTokenIndex;
     }
 

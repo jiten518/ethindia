@@ -8,7 +8,7 @@
       <script type="text/javascript" src="./web3/web3.min.js"></script>
     <script type="text/javascript" src="./plugins/sweetalert/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./plugins/sweetalert/sweetalert.css">
-    <title>ETHIndia - JMNV</title>
+    <title>ETHIndia - JMMN</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./vendors/css/vendor.bundle.base.css">
@@ -32,7 +32,7 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
              <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi"></i>
-              <span class="menu-title">ETHIndia - JMNV</span>
+              <span class="menu-title">ETHIndia - JMMN</span>
           </a>
 
       </div>
@@ -268,7 +268,7 @@
                     </div> -->
 
                     
-                    <button  class="btn btn-success mr-2" onclick=`setUserInfo($("#userID").val())`>Submit</button>
+                    <button  class="btn btn-success mr-2" onclick="onSubmit()">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </div>
           </div>
@@ -309,6 +309,10 @@
   <script src="./js/erc721.js"></script>
 
   <script>
+    function onSubmit(){
+      // 0xEcFb9848d1eD1F76EAfb80075e092565763F8f2C
+      setUserInfo($("#userID").val());
+    }
     function actionPerform(){
       hideLoader();
     }

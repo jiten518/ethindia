@@ -1,6 +1,6 @@
 var NETWORK_ID = 72618;
 var url = "http://172.16.23.189:8548";
-var FRS_CONTRACT_ADDRESS = "0xf7a871d3a0d777c6b0353702fc5d73e497a81e76"
+var FRS_CONTRACT_ADDRESS = "0xeecb53650cadd14a1421bb6e87fd31fa908ce245";//"0x78ED84c6cee74158D3Ba3692d3fc921b06Ca46f5"
 
 if (window.Web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);

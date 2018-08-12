@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <script type="text/javascript" src="./web3/web3.min.js"></script>
-        <script type="text/javascript" src="./plugins/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="./plugins/sweetalert/sweetalert.css">
+        <!-- <script type="text/javascript" src="./plugins/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="./plugins/sweetalert/sweetalert.css"> -->
 
-    <title>ETHIndia - JMNV</title>
+    <title>ETHIndia - JMMN</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./vendors/css/vendor.bundle.base.css">
@@ -33,7 +33,7 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
              <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi"></i>
-              <span class="menu-title">ETHIndia - JMNV</span>
+              <span class="menu-title">ETHIndia - JMMN</span>
           </a>
 
       </div>
@@ -284,31 +284,35 @@
   <script>
     function actionPerform(){
       hideLoader();
-      frsContract.requestNote({from: getLoginUser()}, function(err, data){
+      frsContract.requestNote(function(err, data){
+
           debugger;
           if(err){
               return;
           }
-          parseEvent(data);          
+          if(data.args._to == getLoginUser()){
+             parseEvent(data);
+          }
       })
     }
     function parseEvent(data){
       debugger;
       swal({
-          title: `Withdraw!`,
-          text: `${data.args._from} is requesting to withdraw ${data.data.noteId}`,
+          title: "Withdraw!",
+          text: `${data.args._from} is requesting to withdraw ${data.args.noteId}`,
           type: "warning",
           showCancelButton: true,
           confirmButtonClass: "btn-danger",
           confirmButtonText: "Yes, Accept!",
           closeOnConfirm: false
-        },
-      function(){
-        acceptEvent(data.args);
-      });
+        }).then((willDelete) => {
+          acceptEvent(data.args);
+        });
     }
     function acceptEvent(data){
       initERC721(data.contractAddr);
+      debugger;
+      approveAndtrasfer(data.noteId, data._from);
     }
   </script>
   <!-- endinject -->

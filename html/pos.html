@@ -9,7 +9,7 @@
     <script type="text/javascript" src="./web3/web3.js"></script>
     <script type="text/javascript" src="./plugins/sweetalert/sweetalert.min.js"></script>
     <link rel="stylesheet" href="./plugins/sweetalert/sweetalert.css">
-    <title>ETHIndia - JMNV</title>
+    <title>ETHIndia - JMMN</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./vendors/css/vendor.bundle.base.css">
@@ -31,7 +31,7 @@
          <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
              <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi"></i>
-              <span class="menu-title">ETHIndia - JMNV</span>
+              <span class="menu-title">ETHIndia - JMMN</span>
           </a>
 
       </div>
@@ -272,7 +272,7 @@
                                 <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" style="margin: 20" id="denominationForFakeCurrency">
-                                  <option value="" disabled selected>Loading Dinominations 
+                                  <option value="" disabled selected>Loading Denominations 
                                   </option>
                                 </select>
                                 </div>
@@ -330,7 +330,7 @@
                                 <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" style="margin: 20" id="denominationForVerifyUser">
-                                      <option value="" disabled selected>Loading Dinominations 
+                                      <option value="" disabled selected>Loading Denominations 
                                       </option>
                                 </select>
                                 </div>
@@ -380,7 +380,7 @@
                             <div class="forms-sample" style="margin-left: -10px">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" id="denominationForTransfer">
-                                      <option value="" disabled selected>Loading Dinominations 
+                                      <option value="" disabled selected>Loading Denominations 
                                       </option>
                                 </select>
                                 </div>
@@ -504,7 +504,7 @@
     }
     function initDropdown(address, data){
       var options = ['#denominationForFakeCurrency','#denominationForVerifyUser',"#denominationForTransfer"]
-      var optionTxt = ' <option value="" disabled selected>Select dinominations</option>';
+      var optionTxt = ' <option value="" disabled selected>Select Denominations</option>';
       for(var index=0;index<data.length; index++){
         optionTxt+=`<option value="${address[index]}">${data[index]}</option>`;
       }

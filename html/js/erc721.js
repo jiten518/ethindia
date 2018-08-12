@@ -15,12 +15,22 @@ function getNotes(userId, callback){
 
 function approveAndtrasfer(noteId, _to){
     debugger;
-    erc721Contrct.approveAndTransfer.estimateGas(noteId, _to, function(e, _gas){
+    // erc721Contrct.approveAndTransfer.estimateGas( _to, noteId, function(e, _gas){
+    //     if(e){
+    //         swal("Error","Unable to estgas","error");
+    //         return;
+    //     }
+    //     erc721Contrct.approveAndTransfer.sendTransaction( _to,noteId, function(e, data){
+    //         debugger;
+    //     });
+
+    // })
+    erc721Contrct.transfer.estimateGas( _to, noteId, function(e, _gas){
         if(e){
             swal("Error","Unable to estgas","error");
             return;
         }
-        erc721Contrct.approveAndTransfer(noteId, _to, function(e, data){
+        erc721Contrct.transfer.sendTransaction(_to,noteId, function(e, data){
             debugger;
         });
 

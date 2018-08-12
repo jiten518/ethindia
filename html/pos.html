@@ -163,34 +163,12 @@
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Hello, Richard V.Welsh !</span>
+              <span class="profile-text">Hello,!</span>
               <img class="img-xs rounded-circle" src="./images/faces/face1.jpg" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                  </div>
-                </div>
-              </a>
               <a class="dropdown-item mt-2">
-                Manage Accounts
-              </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
-              <a class="dropdown-item">
-                Sign Out
+                Settings
               </a>
             </div>
           </li>
@@ -277,7 +255,7 @@
 
                                 <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
-                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                <select class="select-drop-down" style="margin: 20" id="denominationForFakeCurrency">
                                       <option value="" disabled selected>Select Dinominations 
                                       </option>
                                       <option value="2000">2000</option>
@@ -292,7 +270,7 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
+                                    <input type="email" class="form-control" id="nodeIdForFakeCurrency" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 
@@ -318,7 +296,7 @@
                     </div>
                   </div>
 
-                <div  class="col-md-3 d-flex align-items-stretch grid-margin"></div>
+                <div  class="col-md-2 d-flex align-items-stretch grid-margin"></div>
 
                 <div class="col-md-3 d-flex align-items-stretch grid-margin">
                     <div class="row flex-grow">
@@ -330,12 +308,12 @@
                               Basic form layout
                             </p> -->
                             <form class="forms-sample">
-                              <div class="form-group-secondary_" >
+                              <div class="form-group-secondary_">
                                 <label for="exampleInputEmail1">Verify User</label>
-                              </div>
-                              <div class="forms-sample">
+
+                                <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
-                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                <select class="select-drop-down" style="margin: 20" id="denominationForVerifyUser">
                                       <option value="" disabled selected>Select Dinominations 
                                       </option>
                                       <option value="2000">2000</option>
@@ -350,7 +328,7 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
+                                    <input type="email" class="form-control" id="noteIdForVerifyUser" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 
@@ -368,24 +346,25 @@
                                 <button class="btn btn-light">Cancel</button>
                                 </div>
                             </div>
+                              </div>
                             </form>
                           </div>
                         </div>
                       </div>
                     </div>
-                </div>
+                  </div>
               </div>
 
 
 
           <div class="row">
-                  <div class="col-md-12 card">
-                    <div class="card-body">
-                      <div class="col-md-12 d-flex align-items-stretch grid-margin">
-
-                            <div class="forms-sample">
+                  <div class="col-md-12 card" style="margin-left: 10px">
+                    <div class="card-body" style="margin-left: -20px">
+                      <label for="exampleInputEmail1">Collect Money</label>
+                      <div class="col-md-12 d-flex align-items-stretch grid-margin" >
+                            <div class="forms-sample" style="margin-left: -10px">
                                 <div style="margin-bottom: 10px">
-                                <select class="select-drop-down" style="margin: 20" id="denominationForBurn">
+                                <select class="select-drop-down" id="denominationForTransfer">
                                       <option value="" disabled selected>Select Dinominations 
                                       </option>
                                       <option value="2000">2000</option>
@@ -400,7 +379,7 @@
                                 <div class="form-group row">
                                   <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Note Id</label>
                                   <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="nodeId" placeholder="Enter NoteId">
+                                    <input type="email" class="form-control" id="nodeIdForTransfer" placeholder="Enter NoteId">
                                   </div>
                                 </div>
 

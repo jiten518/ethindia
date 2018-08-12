@@ -5,9 +5,9 @@
   <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script type="text/javascript" src="./web3/web3.min.js"></script>
+      <script type="text/javascript" src="./web3/web3.min.js"></script>
 
-    <title>ETHIndia - JMMV</title>
+    <title>ETHIndia - JMNV</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="./vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="./vendors/css/vendor.bundle.base.css">
@@ -22,15 +22,16 @@
     <link rel="shortcut icon" href="./images/favicon.png" />
 </head>
 
-<body> 
-<div id="loader"></div>
+<body>
+    <div id="loader"></div>
   <div id="mainDiv" class="container-scroller">
+      
     <!-- partial:./partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
              <a class="nav-link" href="./index.html">
               <i class="menu-icon mdi"></i>
-              <span class="menu-title">ETHIndia - JMMV</span>
+              <span class="menu-title">ETHIndia - JMNV</span>
           </a>
 
       </div>
@@ -214,12 +215,12 @@
               <span class="menu-title">Add Money</span>
             </a>
           </li>
-          <li class="nav-item">
+         <!--  <li class="nav-item">
             <a class="nav-link" href="./burnMoney.html">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Burn Money</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="./list.html">
               <i class="menu-icon mdi mdi-table"></i>
@@ -227,9 +228,9 @@
             </a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="./transfer.html">
+            <a class="nav-link" href="./pos.html">
               <i class="menu-icon mdi mdi-sticker"></i>
-              <span class="menu-title">Transfer</span>
+              <span class="menu-title">POS</span>
             </a>
           </li>
         </ul>
@@ -238,38 +239,16 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                        <div class="col-md-6 d-flex align-items-stretch grid-margin">
-                      <form class="forms-sample">
+<div class="col-md-12 d-flex align-items-stretch grid-margin">
 
-                      <div style="margin-bottom: 10px">
-                      <select class="select-drop-down" style="margin: 20" id="denominationForTransfer">
-                            <option value="" disabled selected>Select Dinominations 
-                            </option>
-                            <option value="2000">2000</option>
-                            <option value="500">500</option>
-                            <option value="100">100</option>
-                            <option value="50">50</option>  
-                            <option value="20">20</option>
-                            <option value="10">10</option>
-                             <option value="5">5</option>
-                      </select>
-                      </div>
-
+                      <div class="forms-sample">
                         <div class="form-group row">
-                          <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Quantity</label>
+                           <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Quantity</label>
                           <div class="col-sm-8">
-                            <input type="email" class="form-control" id="noteIdForTransfer" placeholder="Enter Quantity">
+                            <input type="text" class="form-control" id="userID" placeholder="Enter Id">
+
                           </div>
                         </div>
-
-                        <div class="form-group row">
-                          <label for="exampleInputEmail2" class="col-sm-4 col-form-label">To </label>
-                          <div class="col-sm-8">
-                            <input type="email" class="form-control" id="toAddress" placeholder="Enter To Address">
-                          </div>
-                        </div>
-
-
 
                        <!--  <div class="form-group">
                       <label for="exampleInputName1">Name</label>
@@ -281,18 +260,24 @@
                     </div> -->
 
                     
-                        <button type="submit" class="btn btn-success mr-2">TRANSFER</button>
-                        <button class="btn btn-light">Cancel</button>
-                      </form>
+                    <button  class="btn btn-success mr-2" onclick="callmethod()">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </div>
           </div>
           </div>
-                                  </div>
-
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:./partials/_footer.html -->
-<!--        ADD FOOTE  -->        
-<!-- partial -->
+       <!--  <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">ETHIndia Hack
+              <a href="https://ethindia.co" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
+          </div>
+        </footer> -->
+        <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>
@@ -308,17 +293,21 @@
   <!-- inject:js -->
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
+  <script src="./js/fedres-abi.js"></script>
+  <script src="./js/erc721-abi.js"></script>
+  <script src="./js/web3.setup.js"></script>
+
+  <script src="./js/fed-res-bank.js"></script>
+  <script src="./js/erc721.js"></script>
+
+  <script>
+    function actionPerform(){
+      hideLoader();
+    }
+  </script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
-   <script>
-         
-
-    function actionPerform(){
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("mainDiv").style.display = "block";
-    }
-  </script>
 </body>
 
 </html>

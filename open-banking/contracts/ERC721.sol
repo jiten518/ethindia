@@ -5,7 +5,7 @@ contract ERC721{ //is IERC721{
     address private owner;
     uint256 private denomination;
     uint256 private total;
-
+    address rootUser;
     struct Note{
         uint256 id;
         uint256 createdAt;
@@ -34,13 +34,18 @@ contract ERC721{ //is IERC721{
     event Mint(address _contractAddr, uint256 quantity);
 
 
-    function ERC721(uint256 _d) public{
+    function ERC721(uint256 _d, address _rootUser) public{
         owner = msg.sender;
+        rootUser = _rootUser;
         denomination = _d;
+
     }
 
     function name()external view returns (string){
         return uint2str(denomination);
+    }
+    function getDenomination()external view returns (uint256){
+        return denomination;
     }
 
     function symbol()external view returns (string){
@@ -59,14 +64,15 @@ contract ERC721{ //is IERC721{
         for(uint index = 0; index<quantity; index++){
             uint256 tokenIndex = allTokens.length;
 
+            liveNotes.push(tokenIndex);
+
+            uint256 ownedTokenIndex = ownedTokens[owner].length;
+            ownedTokens[owner].push(tokenIndex);
+            tokenIdToOwner[tokenIndex] = owner;
+            ownedTokensIndex[tokenIndex] = ownedTokenIndex;
+            // allTokensIndex[tokenIndex] = allTokens.length;
             allTokens.push(Note(tokenIndex, block.timestamp, block.timestamp, false));
 
-            uint256 ownedTokenIndex = ownedTokens[msg.sender].length;
-            ownedTokens[msg.sender].push(tokenIndex);
-            tokenIdToOwner[tokenIndex] = msg.sender;
-            ownedTokensIndex[tokenIndex] = ownedTokenIndex;
-            liveNotes.push(tokenIndex);
-            allTokensIndex[tokenIndex] = allTokens.length;
         }
         Mint(this, quantity);
     }
@@ -180,11 +186,11 @@ contract ERC721{ //is IERC721{
 
     }
     modifier onlyMe(){
-        require(msg.sender == owner);
+        require(msg.sender == rootUser);
         _;
     }
     modifier onlyMeAndUser(){
-        require(msg.sender == owner);
+        require(msg.sender == rootUser);
         _;
     }
     modifier onlyValidToken(uint _tokenId) {

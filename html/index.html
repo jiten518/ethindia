@@ -275,7 +275,7 @@
                           <label for="exampleInputEmail1">Total</label>
                         </div>
                         <div class="form-group-secondary">
-                          <label for="exampleInputPassword1">123...</label>
+                          <label for="exampleInputPassword1" id="total">---</label>
                         </div>
                       </form>
                     </div>
@@ -421,12 +421,20 @@
       hideLoader();
       getDenomination({
         onSuccess: function(d){
-          
+
           initERC721(d[1][0])
           displayNoteInfo(getLoginUser(), d[0][0]);
         },
         onError: function(e){
           debugger;
+        }
+      })
+      getTotalMoney(getLoginUser(), {
+        onSuccess: function(d){
+            $("#total").text(d);
+        },
+        onError: function(e){
+
         }
       })
     }    

@@ -256,15 +256,8 @@
                                 <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" style="margin: 20" id="denominationForFakeCurrency">
-                                      <option value="" disabled selected>Select Dinominations 
-                                      </option>
-                                      <option value="2000">2000</option>
-                                      <option value="500">500</option>
-                                      <option value="100">100</option>
-                                      <option value="50">50</option>  
-                                      <option value="20">20</option>
-                                      <option value="10">10</option>
-                                       <option value="5">5</option>
+                                  <option value="" disabled selected>Loading Dinominations 
+                                  </option>
                                 </select>
                                 </div>
                                 <div class="form-group row">
@@ -292,7 +285,7 @@
                                 </div> -->
 
                                 <div class="row">
-                                <button type="submit" class="btn btn-success mr-2">CHECK</button>
+                                <button class="btn btn-success mr-2" onclick="onCheckClicked()">CHECK</button>
                                 <button class="btn btn-light">Cancel</button>
                                 </div>
                             </div>
@@ -321,15 +314,8 @@
                                 <div class="forms-sample">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" style="margin: 20" id="denominationForVerifyUser">
-                                      <option value="" disabled selected>Select Dinominations 
+                                      <option value="" disabled selected>Loading Dinominations 
                                       </option>
-                                      <option value="2000">2000</option>
-                                      <option value="500">500</option>
-                                      <option value="100">100</option>
-                                      <option value="50">50</option>  
-                                      <option value="20">20</option>
-                                      <option value="10">10</option>
-                                       <option value="5">5</option>
                                 </select>
                                 </div>
                                 <div class="form-group row">
@@ -355,7 +341,7 @@
                                 </div> -->
 
                                 <div class="row">
-                                <button type="submit" class="btn btn-success mr-2">VERIFY</button>
+                                <button class="btn btn-success mr-2" onclick="onVerifyClicked()">VERIFY</button>
                                 <button class="btn btn-light">Cancel</button>
                                 </div>
                             </div>
@@ -378,15 +364,8 @@
                             <div class="forms-sample" style="margin-left: -10px">
                                 <div style="margin-bottom: 10px">
                                 <select class="select-drop-down" id="denominationForTransfer">
-                                      <option value="" disabled selected>Select Dinominations 
+                                      <option value="" disabled selected>Loading Dinominations 
                                       </option>
-                                      <option value="2000">2000</option>
-                                      <option value="500">500</option>
-                                      <option value="100">100</option>
-                                      <option value="50">50</option>  
-                                      <option value="20">20</option>
-                                      <option value="10">10</option>
-                                       <option value="5">5</option>
                                 </select>
                                 </div>
                                 <div class="form-group row">
@@ -413,7 +392,7 @@
                                 </div> -->
 
                           
-                                <button type="submit" class="btn btn-success mr-2">SCAN</button>
+                                <button class="btn btn-success mr-2" onclick="onScanClicked()">SCAN</button>
                                 <button class="btn btn-light">Cancel</button>
                             </div>
                       </div>
@@ -441,6 +420,11 @@
   <!-- inject:js -->
   <script src="./js/off-canvas.js"></script>
   <script src="./js/misc.js"></script>
+  <script src="./js/fedres-abi.js"></script>
+  <script src="./js/erc721-abi.js"></script>
+  <script src="./js/web3.setup.js"></script>
+  <script src="./js/fed-res-bank.js"></script>
+  <script src="./js/erc721.js"></script>  
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
@@ -448,8 +432,63 @@
          
 
     function actionPerform(){
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("mainDiv").style.display = "block";
+      hideLoader();
+      getDenomination({
+          onSuccess: function(d){
+            initDropdown(d[1], d[0]);
+          },
+          onError: function(e){
+            debugger;
+          }
+        })
+    }
+    function onCheckClicked(){
+        // contractAddress = $("#denominationForFakeCurrency").val()
+        var selectedDemon = parseInt($("#denominationForFakeCurrency option:selected").text());
+        var noteId = parseInt($("#nodeIdForFakeCurrency").val());
+        frsContract.isValidNote.call(selectedDemon,noteId, function (error, data) {
+          if(error){
+            return;
+          }
+          if(data){
+            swal("Hey!", `Noe ${noteId} is not a fake!`, "success");
+          }else{
+            swal("Hey!", `Note ${noteId} is fake!`, "error");
+          }
+          debugger;  
+        });
+    }
+    function onVerifyClicked(){
+      var selectedDemon = parseInt($("#denominationForVerifyUser option:selected").text());
+        var noteId = $("#noteIdForVerifyUser").val()
+        var address = $("#AddressForVerifyUser").val()
+        frsContract.validateNote.call(selectedDemon, noteId,address, function (error, data) {
+          debugger;  
+          if(data){
+            swal("Hey!", `Note ${noteId} is owned by ${address}`, "success");
+          }else{
+            swal("Sorry!", `Note ${noteId} is not owned by ${address}!`, "error");
+          }
+        });
+    }    
+    function onScanClicked(){
+        var selectedDemon = parseInt($("#denominationForVerifyUser option:selected").text());
+        var noteId = $("#noteIdForVerifyUser").val()
+        var address = $("#AddressForVerifyUser").val()
+        frsContract.validateNote.call(selectedDemon, noteId,address, function (error, data) {
+
+        });
+    }
+    function initDropdown(address, data){
+      var options = ['#denominationForFakeCurrency','#denominationForVerifyUser',"#denominationForTransfer"]
+      var optionTxt = ' <option value="" disabled selected>Select dinominations</option>';
+      for(var index=0;index<data.length; index++){
+        optionTxt+=`<option value="${address[index]}">${data[index]}</option>`;
+      }
+      for(var index=0;index<options.length; index++){
+        $(options[index]).empty();
+        $(options[index]).append(optionTxt);
+      }
     }
   </script>
 </body>

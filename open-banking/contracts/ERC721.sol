@@ -5,7 +5,7 @@ contract ERC721{ //is IERC721{
     address private owner;
     uint256 private denomination;
     uint256 private total;
-    address rootUser;
+    address private rootContract;
     struct Note{
         uint256 id;
         uint256 createdAt;
@@ -34,9 +34,11 @@ contract ERC721{ //is IERC721{
     event Mint(address _contractAddr, uint256 quantity);
 
 
-    function ERC721(uint256 _d, address _rootUser) public{
-        owner = msg.sender;
-        rootUser = _rootUser;
+    function ERC721(uint256 _d, address _rootContract) public{
+        // owner = msg.sender;
+        // rootContract = _rootContract;
+        owner = _rootContract;
+        rootContract = msg.sender;
         denomination = _d;
 
     }
@@ -60,7 +62,7 @@ contract ERC721{ //is IERC721{
         return ownedTokens[_owner].length;
     }
 
-    function printMoney(uint256 quantity)external onlyMe{
+    function printMoney(uint256 quantity)public onlyMe{
         for(uint index = 0; index<quantity; index++){
             uint256 tokenIndex = allTokens.length;
 
@@ -186,11 +188,11 @@ contract ERC721{ //is IERC721{
 
     }
     modifier onlyMe(){
-        require(msg.sender == rootUser);
+        require(msg.sender == rootContract);
         _;
     }
     modifier onlyMeAndUser(){
-        require(msg.sender == rootUser);
+        require(msg.sender == owner);
         _;
     }
     modifier onlyValidToken(uint _tokenId) {

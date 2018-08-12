@@ -10,7 +10,7 @@ contract FederalReserve {//is  IGovernance{
     uint256[] private denominations;
     address[] private erc20Contracts;
 
-    event onTransactionCompleted();
+    event onTransactionCompleted(string msgr);
     event requestNote(address indexed _from, address indexed _to, address contractAddr);
 
     function FederalReserve() public{
@@ -27,7 +27,7 @@ contract FederalReserve {//is  IGovernance{
         }
         ERC721 _moneyContract = ERC721(cryptoERC20[denomination]);
         _moneyContract.printMoney(quantity);
-        onTransactionCompleted();
+        onTransactionCompleted("printMoney");
     }
 
     function createMoneyContract(uint256 denomination) internal{
@@ -43,7 +43,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.approve(to, notes[index]);
         }
-        onTransactionCompleted();
+        onTransactionCompleted("approve");
     }
 
     function tranfer(uint256 denomination, uint256[] notes, address to) external onlyMe{
@@ -52,7 +52,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.transfer(to, notes[index]);
         }
-        onTransactionCompleted();
+        onTransactionCompleted("tranfer");
     }
 
     function approveAndTransfer(uint256 denomination, uint256[] notes, address to) external{
@@ -62,7 +62,7 @@ contract FederalReserve {//is  IGovernance{
             _moneyContract.approve(to, notes[index]);
             _moneyContract.transfer(to, notes[index]);
         }
-        onTransactionCompleted();
+        onTransactionCompleted("approveAndTransfer");
     }
 
     function burnMoney(uint256 denomination, uint256[] notes) external onlyMeAndUser{
@@ -70,7 +70,7 @@ contract FederalReserve {//is  IGovernance{
         for(uint256 index = 0; index<notes.length; index++){
             _moneyContract.burnMoney(notes[index]);
         }
-        onTransactionCompleted();
+        onTransactionCompleted("burnMoney");
     }
 
     function getDenominations()external view returns(uint256[], address[]){

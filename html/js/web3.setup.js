@@ -1,6 +1,6 @@
 var NETWORK_ID = 72618;
 var url = "http://172.16.23.189:8548";
-var FRS_CONTRACT_ADDRESS = "0x34447ffe2ca2cb1803ab492cdfbba0971bfd841f"
+var FRS_CONTRACT_ADDRESS = "0x93c71896a417a29093b8f2afc5d37defeb23e340"
 
 if (window.Web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
@@ -19,5 +19,5 @@ web3.version.getNetwork(function(err, networkId){
 });
 
 function getLoginUser(){
-    return FRS_CONTRACT_ADDRESS;
+    return "0xba124aadc58ee6b08b548c1c479ee8e588479e00";
 }

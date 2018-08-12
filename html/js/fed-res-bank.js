@@ -10,6 +10,9 @@ function initFedResBank() {
     actionPerform();
 }
 
+function initEvents(){
+    
+}
 function hideLoader(){
     document.getElementById("loader").style.display = "none";
     document.getElementById("mainDiv").style.display = "block";
@@ -26,13 +29,18 @@ function printMoney() {
     var _from = web3.eth.accounts[0];
     frsContract.printMoney.estimateGas(denomination, quantity, { from: _from }, function (error, _gas) {
         if (error) {
-            hideLoader();            
+            showError("printMoney");            
             return;
             //Show sweet alert();
         }
         debugger;
         frsContract.printMoney.sendTransaction(denomination, quantity, { from: _from, gas: parseInt(_gas * 1.3) }, function (error, _gas) {
-            hideLoader();
+            if (error) {
+                showError("printMoney");            
+                return;
+                //Show sweet alert();
+            }
+            txId = _gas;
         });
     });
 }
